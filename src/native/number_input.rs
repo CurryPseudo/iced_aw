@@ -14,7 +14,7 @@ use iced_native::{
         Column, Container, Operation, Row, Text, TextInput,
     },
     Alignment, Background, Clipboard, Color, Element, Event, Layout, Length, Padding, Point,
-    Rectangle, Shell, Size, Widget,
+    Rectangle, Shell, Size, Widget, IME,
 };
 use num_traits::{Num, NumAssignOps};
 use std::{fmt::Display, str::FromStr};
@@ -358,6 +358,7 @@ where
         cursor_position: Point,
         renderer: &Renderer,
         clipboard: &mut dyn Clipboard,
+        ime: &dyn IME,
         shell: &mut Shell<Message>,
     ) -> event::Status {
         let mut children = layout.children();
@@ -457,6 +458,7 @@ where
                                         cursor_position,
                                         renderer,
                                         clipboard,
+                                        ime,
                                         shell,
                                     )
                                 } else {
@@ -534,6 +536,7 @@ where
                                                     cursor_position,
                                                     renderer,
                                                     clipboard,
+                                                    ime,
                                                     shell,
                                                 )
                                             } else {
@@ -551,6 +554,7 @@ where
                                 cursor_position,
                                 renderer,
                                 clipboard,
+                                ime,
                                 shell,
                             ),
                         }
@@ -575,6 +579,7 @@ where
                         cursor_position,
                         renderer,
                         clipboard,
+                        ime,
                         shell,
                     ),
                 }
@@ -589,6 +594,7 @@ where
                     cursor_position,
                     renderer,
                     clipboard,
+                    ime,
                     shell,
                 ),
             }
